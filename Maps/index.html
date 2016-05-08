@@ -12,107 +12,135 @@
 		<meta name="author" content="SachinT">
 		<meta name="viewport" content="width=device-width; initial-scale=1.0">
 		<style type="text/css" media="screen">
-			body{
-				font-size:0.9em;
-				font-family:'Arial' !important;
+			body {
+				font-size: 0.9em;
+				font-family: 'Arial' !important;
 			}
-			
-			button{
+
+			button {
 				border-radius: 5px;
-				padding:5px 10px;
-				text-align:center;
-				display:table-cell;
-				vertical-align:middle;
-				margin-top:10px;
-				cursor:pointer;
+				padding: 5px 10px;
+				text-align: center;
+				display: table-cell;
+				vertical-align: middle;
+				margin-top: 10px;
+				cursor: pointer;
 			}
-			td{
-				padding:5px 20px;
+			td {
+				padding: 5px 20px;
 			}
-			.statesbtn{
-				background:orange;
-				padding:10px;
-				text-align:center;
-				position:relative;
-				display:inline-block;
-				width:100%;
-				border-radius:5px;
+			.statesbtn {
+				background: orange;
+				padding: 10px;
+				text-align: center;
+				position: relative;
+				display: inline-block;
+				width: 100%;
+				border-radius: 5px;
 				text-decoration: none;
 			}
-			
-			#map{
-				width:800px;
-				height:400px;
-				position:relative;
-			
+
+			#map {
+				width: 800px;
+				height: 400px;
+				position: relative;
 			}
-			.header1{
-				font-size:1.8em;
+			.header1 {
+				font-size: 1.8em;
 			}
-			.header2{
-				font-size:1.5em;
+			.header2 {
+				font-size: 1.5em;
 			}
-			.header3{
-				font-size:1.2em;
+			.header3 {
+				font-size: 1.2em;
 			}
-			.hide{
-				display:none;
+			.hide {
+				display: none;
 			}
-			#mapholder.tiny{
-				width:1px;
-				height:1px;
-				overflow:hidden;
+			#mapholder.tiny {
+				width: 1px;
+				height: 1px;
+				overflow: hidden;
 			}
-			#btnBack{
-				clear:both;
+			#btnBack {
+				clear: both;
 			}
-			#feedback{
-				    position: absolute;
-			    width: 400px;
-			    left: 825px;
-			    background-color: rgba(0,0,0,0.8);
-			    border: 2px solid;
-			    border-radius: 6px;
-			    padding: 10px;
-			    box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.8);
-			    top: 80px;
+			#feedback {
+				position: absolute;
+				width: 400px;
+				left: 825px;
+				background-color: rgba(0,0,0,0.8);
+				border: 2px solid;
+				border-radius: 6px;
+				padding: 10px;
+				box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.8);
+				top: 80px;
 			}
-			#feedback #content{
-				height:70%;
-				width:100%;
-				color:#fff;
-				background-color:#000;
+			#feedback #content {
+				height: 70%;
+				width: 100%;
+				color: #fff;
+			}
+			#time {
+				position: absolute;
+				width: 30px;
+				height: 27px;
+				top: 312px;
+				left: 706px;
+				background-color: #ccc;
+				padding: 10px;
+				border-radius: 30px;
+/*				border: 3px solid;*/
+				text-align: center;
 			}
 		</style>
-		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkreLy1k_xgRmeqwSvaNyV1GShXgjc5t4&callback=initMap"
-  type="text/javascript"></script>
-  <script src="app.js"></script>
-		<script src="jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="data.js" type="text/javascript" charset="utf-8"></script>
+
 	</head>
 
-	<body onload="init" >
+	<body  >
 		<div id="area">
-			<p class="header3"> select contry from below list to start the treasure hunt.</p>
+			<p class="header3">
+				select contry from below list to start the treasure hunt.
+			</p>
 			<table id="statetbl" border="0" cellspacing="5" cellpadding="5"></table>
-			<button class="startbtn" value="start">Start</button>
+			<button class="startbtn" value="start">
+				Start
+			</button>
 		</div>
 		<div id="mapholder" class="tiny">
 			<div id="map"></div>
-			<button id="btnBack">back</button>
+			<button id="btnBack">
+				Reset
+			</button>
+			<button id="btnSubmit">
+				Submit
+			</button>
+			<p id="time" class="header2 hide"></p>
+			<p id="gameover" class="header2 hide">Game over!</p>
 		</div>
 		<div id="feedback" class="hide">
 			<p id="content"></p>
-			<button id="btnCloseFeedback">Close</button>
+		<!-- 	<button id="btnCloseFeedback">
+				Close
+			</button> -->
 		</div>
+
+		<script src="jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="data.js" type="text/javascript" charset="utf-8"></script>
+		<script src="timer.js"></script>
+		<script src="mapControl.js"></script>
+		<script src="app.js"></script>
 		<script type="text/javascript" charset="utf-8">
-			
-				var init = function(){
+			var init = function() {
+				setTimeout(function() {
 					initMap();
-					
-				};
-				
+
+				}, 2000);
+
+			};
 
 		</script>
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkreLy1k_xgRmeqwSvaNyV1GShXgjc5t4&callback=init"
+		type="text/javascript"></script>
 	</body>
 </html>
